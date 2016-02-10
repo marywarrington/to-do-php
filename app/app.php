@@ -26,7 +26,11 @@
         $task = new Task($_POST['description']);
         $task->save();
         return $app['twig']->render('tasks.html.twig', array(
-            'tasks' => Task::getAll()
+            'tasks' => Task::getAll(),
+            'message' => array(
+                'text' => 'You created a new task!',
+                'type' => 'success'
+            )
             ));
     });
 
@@ -34,7 +38,11 @@
         Task::deleteAll();
 
         return $app['twig']->render('tasks.html.twig', array(
-            'tasks' => Task::getAll()
+            'tasks' => Task::getAll(),
+            'message' => array(
+                'text' => 'You deleted your tasks!',
+                'type' => 'danger'
+            )
             ));
     });
 
